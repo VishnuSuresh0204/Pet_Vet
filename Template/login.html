@@ -1,0 +1,38 @@
+{% extends 'common/commonpage.html' %} {% load static %}
+{% for m in msg %}
+<script>alert('{{m}}')</script>
+{% endfor %}
+
+{% block header %}
+<div class="form-container-wrapper">
+  <div class="form-card" style="max-width: 450px;">
+    <h2 class="form-title">Welcome Back</h2>
+    <p style="text-align: center; color: #777; margin-bottom: 30px; margin-top: -20px;">Please login to your account</p>
+
+    <form action="#" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="Email" class="premium-input" placeholder="Enter your email" required="" />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="Password" class="premium-input" placeholder="Enter your password" required="" />
+      </div>
+
+      <div class="form-submit-wrapper">
+        <input type="submit" value="LOGIN" class="btn-premium">
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <p style="color: #666;">Don't have an account?</p>
+        <a href="/cus_register"
+          style="color: #F44336; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 5px;">Register
+          here</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

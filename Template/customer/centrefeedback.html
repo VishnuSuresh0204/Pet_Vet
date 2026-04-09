@@ -1,0 +1,36 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h2 class="page-heading">Care Centre Feedbacks</h2>
+
+  <div class="container">
+    {% if qy %}
+    <table class="table table-bordered table-striped page-table">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Submission Date</th>
+          <th>Feedback Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in qy %}
+        <tr>
+          <td style="font-weight: 600;">{{data.user.customer_name}}</td>
+          <td style="color: #888;">{{data.Date}}</td>
+          <td>"{{data.feedback}}"</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-comments-o" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No feedback found for this care centre.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

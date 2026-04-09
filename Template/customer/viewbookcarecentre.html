@@ -1,0 +1,94 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h3 class="page-heading">Accommodation Bookings</h3>
+
+  <div class="container">
+    {% if qry %}
+    <div class="table-responsive">
+      <table class="table page-table">
+        <thead>
+          <tr>
+            <th>Centre Details</th>
+            <th>Pet Info</th>
+            <th>Duration</th>
+            <th>Booking Date</th>
+            <th>Status & Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in qry %}
+          <tr>
+            <td>
+              <div style="font-weight: 600; color: #333; margin-bottom: 4px;">{{data.centre.carecentre}}</div>
+              <div style="font-size: 0.85em; color: #666;">
+                <i class="fa fa-map-marker"></i> {{data.centre.district}}
+              </div>
+            </td>
+            <td>
+              <div style="font-weight: 600; color: #333;">{{data.pet}}</div>
+              <div style="font-size: 0.85em; color: #666; max-width: 200px;">{{data.about}}</div>
+            </td>
+            <td>
+              <div style="font-weight: 600; color: #F44336;">{{data.startdate}}</div>
+              <div style="font-size: 0.85em; color: #888;">{{data.days}} Days</div>
+            </td>
+            <td style="font-size: 0.9em; color: #666;">
+              {{data.booked_date|date:"M d, Y"}}<br>
+              <small>{{data.booked_date|time:"H:i"}}</small>
+            </td>
+            <td>
+              <div style="margin-bottom: 10px;">
+                {% if data.status == 'booked' %}
+                <span class="badge"
+                  style="background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2;">Pending</span>
+                {% elif data.status == 'Accept' %}
+                <span class="badge"
+                  style="background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;">Accepted</span>
+                {% elif data.status == 'paid' %}
+                <span class="badge" style="background: #e3f2fd; color: #1565c1; border: 1px solid #bbdefb;">Paid</span>
+                {% elif data.status == 'canceled' %}
+                <span class="badge"
+                  style="background: #fafafa; color: #9e9e9e; border: 1px solid #eeeeee;">Canceled</span>
+                {% else %}
+                <span class="badge"
+                  style="background: #ffebee; color: #c62828; border: 1px solid #ffcdd2;">{{data.status}}</span>
+                {% endif %}
+              </div>
+
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                {% if data.status == 'Accept' %}
+                <div style="width: 100%; margin-bottom: 5px; font-weight: 700; color: #333;">₹{{data.total}}</div>
+                <a href="/carecentrepayment?id={{data.id}}" class="btn btn-sm btn-success"
+                  style="border-radius: 4px;">PAY NOW</a>
+                {% endif %}
+
+                {% if data.status == 'booked' %}
+                <a href="/cancelcarecentrebooking?id={{data.id}}" class="btn btn-sm btn-outline-danger"
+                  style="border-radius: 4px;">CANCEL</a>
+                {% endif %}
+
+                <a href="/feedback_centre?id={{data.centre.id}}" class="btn btn-sm btn-info"
+                  style="border-radius: 4px;">FEEDBACK</a>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-calendar-o" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>You haven't booked any accommodation yet.</p>
+      <a href="/userview_centre" class="btn-premium"
+        style="display: inline-block; width: auto; padding: 10px 25px; text-decoration: none; margin-top: 15px;">BROWSE
+        CENTRES</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

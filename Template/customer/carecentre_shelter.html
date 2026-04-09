@@ -1,0 +1,63 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+<div class="team agileits">
+  <h3 class="agileits-title w3title2">Pet Care Centres</h3>
+  <div class="row">
+    {% for data in qry %}
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">{{ data.carecentre }}</h4>
+          <p class="card-text"><strong>Owner Name:</strong> {{ data.owner_name }}</p>
+          <p class="card-text"><strong>Email:</strong> {{ data.email }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ data.Address }}</p>
+          <p class="card-text"><strong>Phonenumber:</strong> {{ data.phonenumber }}</p>
+          <a href="\bookcarecentre?id={{ data.id }}" class="btn btn-primary">Book</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<style>
+  .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+.card h4 {
+  margin-top: 0;
+}
+
+.card-action {
+  margin-top: 10px;
+}
+
+.book-button {
+  background-color: #ff5252;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.book-button:hover {
+  background-color: #e02020;
+}
+
+</style>
+{% endblock %}

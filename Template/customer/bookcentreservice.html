@@ -1,0 +1,49 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Book Centre Service</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Appointment Date</label>
+                <input type="date" id="date" name="date" class="premium-input" required="">
+            </div>
+
+            <div class="form-group">
+                <label>Appointment Time</label>
+                <input type="time" name="time" class="premium-input" required="">
+            </div>
+
+            <div class="form-submit-wrapper">
+                <input type="submit" value="BOOK SERVICE" class="btn-premium">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var eventDateInput = document.getElementById('date');
+        var today = new Date().toISOString().split('T')[0];
+        eventDateInput.setAttribute('min', today);
+
+        var form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+            var selectedDate = new Date(eventDateInput.value);
+            var currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0);
+
+            if (selectedDate < currentDate) {
+                alert("Date must be greater than or equal to today's date.");
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+{% endblock %}

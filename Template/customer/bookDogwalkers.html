@@ -1,0 +1,71 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Book Dog Walker</h2>
+
+        <div class="agileits-login">
+            {% for data in qy %}
+            <form action="#" method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Walking Start Time</label>
+                            <input type="time" id="walkin" name="walkin" class="premium-input" required="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Walking End Time</label>
+                            <input type="time" id="walkout" name="walkout" class="premium-input" required="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Service Type</label>
+                    <select name="service" class="premium-select" required>
+                        <option value="" disabled selected>Select a service</option>
+                        {% for service in services %}
+                        <option value="{{ service.id }}">{{ service.service }} (₹{{ service.rate }}/hr)</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-submit-wrapper">
+                    <input type="submit" value="REQUEST WALKER" class="btn-premium">
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const walkinInput = document.getElementById('walkin');
+        const walkoutInput = document.getElementById('walkout');
+        const form = document.querySelector('form');
+
+        if (form) {
+            form.addEventListener('submit', function (event) {
+                if (walkinInput.value && walkoutInput.value) {
+                    const today = new Date().toISOString().split('T')[0];
+                    const walkinTime = new Date(`${today}T${walkinInput.value}`);
+                    const walkoutTime = new Date(`${today}T${walkoutInput.value}`);
+
+                    if (walkoutTime <= walkinTime) {
+                        alert('Walkout time must be after walkin time.');
+                        event.preventDefault();
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+{% endblock %}

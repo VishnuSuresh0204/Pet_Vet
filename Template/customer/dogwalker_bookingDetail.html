@@ -1,0 +1,63 @@
+{% extends 'customer/userHome.html' %} {% load static %} {% block header %}
+
+<div>
+  <h3 class="page-heading">Dog Walker Booking</h3>
+  <div class="inner_content_info_agileits">
+    <div class="container">
+      <div class="tittle_head_w3ls">
+        {% if qry %}
+        <table class="table table-bordered table-striped page-table">
+          <tr>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Total Charge</th>
+            <th>Status</th>
+          </tr>
+          {% for data in qry %}
+
+          <tr>
+            <td>{{ data.walker.name }}</td>
+            <td>{{ data.service.service }}</td>
+            <td>{{ data.walker.email }}</td>
+            <td>{{ data.walker.Address }}</td>
+            <td>{{ data.walker.phonenumber }}</td>
+            <td>{{ data.totalcharge }}</td>
+            {% if data.workstatus == 'Accepted' %}
+            <td>
+              <a href="/walkerbookingpayment?id={{ data.id }}" class="btn btn-warning">Pay</a>
+              <a href="/canceldogwalking?id={{ data.id }}" class="btn btn-danger">Cancel</a>
+            </td>
+
+            {% elif data.workstatus == 'paid' %}
+            <td>
+              <!-- <a href="/viewitems?id={{ data.id }}" class="btn btn-warning">Cancel</a> -->
+              <a href="/feedback_walker?id={{ data.walker.id }}" class="btn btn-primary">Feedback</a>
+            </td>
+            {% elif data.workstatus == 'pending' %}
+            <td>
+              <a href="/canceldogwalking?id={{ data.id }}" class="btn btn-danger">Cancel</a>
+            </td>
+            {% else %}
+            <td>
+              <!-- <a href="/canceldogwalking?id={{ data.id }}" class="btn btn-danger">Cancel</a>
+              <a href="/feedback_walker?id={{ data.id }}" class="btn btn-primary">Feedback</a> -->
+              {{data.workstatus}}
+            </td>
+            {% endif %}
+          </tr>
+
+          {% endfor %}
+          <!-- Add more rows as needed -->
+        </table>
+        {% else %}
+        <p>No data</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

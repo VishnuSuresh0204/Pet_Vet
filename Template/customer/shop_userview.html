@@ -1,0 +1,93 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="dashboard-banner" style="background: var(--pet-peach-bg);">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <h2 class="page-heading" style="margin-bottom: 0;">Verified Pet Shops</h2>
+        <p style="color: #666; margin-top: 10px;">Quality pets, supplies, and accessories for your home.</p>
+      </div>
+
+      <div class="search-box"
+        style="background: white; padding: 10px; border-radius: 50px; box-shadow: var(--pet-shadow); display: flex; align-items: center; min-width: 400px; max-width: 100%;">
+        <i class="fa fa-shopping-basket" style="color: var(--pet-coral); margin-left: 20px; font-size: 1.2em;"></i>
+        <form method="get" action="/userview_shop/" style="display: flex; flex: 1; align-items: center;">
+          <input type="text" name="district" placeholder="Find shops by district..."
+            style="border: none; padding: 10px 15px; flex: 1; font-size: 1em; outline: none; background: transparent;"
+            value="{{ request.GET.district }}">
+          <button type="submit" class="btn-premium" style="width: auto; padding: 8px 25px !important; margin: 0;">
+            SEARCH
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 50px; margin-bottom: 100px;">
+  {% if qry %}
+  <div class="row">
+    {% for data in qry %}
+    <div class="col-md-4" style="margin-bottom: 30px;">
+      <div class="form-card" style="padding: 0; background: #fff; height: 100%;">
+        <div style="background: #ffa726; height: 8px;"></div>
+        <div style="padding: 30px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+            <div
+              style="width: 60px; height: 60px; background: rgba(255, 167, 38, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <i class="fa fa-shopping-bag" style="color: #ef6c00; font-size: 24px;"></i>
+            </div>
+            <span class="badge" style="background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2;">OPEN NOW</span>
+          </div>
+
+          <h4 style="margin-bottom: 5px; font-weight: 700;">{{data.shop_name}}</h4>
+          <p style="color: #999; font-size: 0.8em; margin-bottom: 20px;">Owned by {{data.owner_name}}</p>
+
+          <div style="margin-bottom: 25px; color: #666; font-size: 0.9em;">
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+              <i class="fa fa-map-marker" style="width: 25px; color: #999;"></i>
+              <span>{{data.Address}}</span>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+              <i class="fa fa-phone" style="width: 25px; color: #999;"></i>
+              <span>{{data.phonenumber}}</span>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <a href="/viewproducts_user?id={{data.id}}" class="btn-premium"
+              style="justify-content: center; background: var(--pet-coral) !important;">
+              <i class="fa fa-tag"></i> SHOP GEAR
+            </a>
+            <a href="/view_pets_user?id={{data.id}}" class="btn-premium"
+              style="justify-content: center; background: var(--pet-mustard) !important;">
+              <i class="fa fa-heart-o"></i> ADOPT PETS
+            </a>
+          </div>
+          <a href="/feedback_shop?id={{data.id}}" class="btn-premium"
+            style="width: 100%; margin-top: 10px; background: var(--pet-gray) !important; justify-content: center;">
+            <i class="fa fa-star"></i> SHOP REVIEWS
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="text-align: center; padding: 100px 0;">
+    <div
+      style="width: 100px; height: 100px; background: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
+      <i class="fa fa-shopping-basket" style="font-size: 50px; color: #ccc;"></i>
+    </div>
+    <h3 style="color: #666;">No Shops Found</h3>
+    <p style="color: #999;">We couldn't find any pet shops in "{{ request.GET.district }}". Please try another district.
+    </p>
+    <a href="/userview_shop/" class="btn-premium"
+      style="width: auto; background: var(--pet-gray) !important; margin-top: 20px;">VIEW ALL SHOPS</a>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

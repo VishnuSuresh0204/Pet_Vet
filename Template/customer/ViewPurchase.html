@@ -1,0 +1,40 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h3 class="page-heading">Purchase History</h3>
+
+  <div class="container">
+    {% if data %}
+    <table class="table table-bordered table-striped page-table">
+      <thead>
+        <tr>
+          <th>DATE</th>
+          <th>TOTAL AMOUNT</th>
+          <th>DETAILS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in data %}
+        <tr>
+          <td>{{ d.date }}</td>
+          <td style="font-weight: 600; color: #333;">₹{{ d.amount }}</td>
+          <td>
+            <a href="/viewitems?id={{ d.id }}" class="btn btn-warning"
+              style="border-radius: 4px; font-weight: 600; font-size: 0.85em;">VIEW ITEMS</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-history" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No purchase history found.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

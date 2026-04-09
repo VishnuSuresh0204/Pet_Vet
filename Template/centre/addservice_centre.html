@@ -1,0 +1,36 @@
+{% extends 'centre/carecentreHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Add Centre Service</h2>
+
+        <form action="#" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Service Name</label>
+                <input type="text" name="service" class="premium-input" placeholder="e.g. Pet Grooming, Spa"
+                    required="">
+            </div>
+
+            <div class="form-group">
+                <label>Service Rate (₹)</label>
+                <input type="number" name="rate" class="premium-input" placeholder="0.00" min="0" required="">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" class="premium-textarea" placeholder="What does this service include?"
+                    required=""></textarea>
+            </div>
+
+            <div class="form-submit-wrapper">
+                <input type="submit" value="ADD SERVICE" class="btn-premium">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Paw Pal | Veterinary Clinic Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+	<!-- Core Assets -->
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+	<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/premium-petlover.css' %}" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+	<!-- Navbar -->
+	<header class="header">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-3">
+					<div class="agileits-logo">
+						<h1><a href="/clinicHome">Paw Pal Clinic</a></h1>
+					</div>
+				</div>
+				<div class="col-md-9 text-right">
+					<nav class="navbar navbar-default" style="display: inline-block;">
+						<ul class="nav navbar-nav cl-effect-16">
+							<li><a href="/clinicHome">Dashboard</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Medical Team <span
+										class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/doctor_reg">Add New Doctor</a></li>
+									<li><a href="/view_doctor">Doctor Roster</a></li>
+								</ul>
+							</li>
+							<li><a href="/view_doctorbooking">Appointments</a></li>
+							<li><a href="/viewfeedback_clinic">Clinic Reviews</a></li>
+							<li><a href="/login" class="btn-premium"
+									style="padding: 8px 20px !important; margin-left: 20px; color: white !important;">Log
+									Out</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	{% block header %}
+	<div class="container" style="margin-top: 40px;">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="page-heading">Medical Operations</h2>
+			</div>
+			<div class="col-md-3">
+				<div class="form-card text-center" style="padding: 30px;">
+					<i class="fa fa-calendar-check-o"
+						style="font-size: 35px; color: var(--pet-coral); margin-bottom: 15px;"></i>
+					<h4>Incoming Visits</h4>
+					<p style="color: #666; font-size: 0.9em; margin-bottom: 20px;">Review and manage your patient
+						appointments.</p>
+					<a href="/view_doctorbooking" class="btn-premium" style="width: 100%;">View Hub</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-card text-center" style="padding: 30px;">
+					<i class="fa fa-user-md"
+						style="font-size: 35px; color: var(--pet-mustard); margin-bottom: 15px;"></i>
+					<h4>Team Management</h4>
+					<p style="color: #666; font-size: 0.9em; margin-bottom: 20px;">Maintain records and staff
+						information.</p>
+					<a href="/view_doctor" class="btn-premium"
+						style="width: 100%; background: var(--pet-mustard) !important;">Staff List</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-card" style="padding: 30px; height: 100%;">
+					<h4 style="color: var(--pet-mint); margin-bottom: 15px;">Health First</h4>
+					<p style="color: #666; line-height: 1.7;">Your clinic is a cornerstone of our community. Keeping
+						your doctor roster updated ensures pet owners can find the right specialist for their furry
+						family members at any time.</p>
+					<div style="margin-top: 20px;">
+						<a href="/doctor_reg" class="btn-premium"
+							style="width: auto; background: var(--pet-mint) !important;">Register New Specialist</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+
+	<footer class="footer" style="margin-top: 100px;">
+		<div class="footer-bottom">
+			<div class="container text-center">
+				<p style="color: rgba(255,255,255,0.4); margin: 0; font-size: 0.8em;">&copy; 2023 Paw Pal Clinic |
+					Health & Care Infrastructure</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>

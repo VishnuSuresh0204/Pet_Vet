@@ -1,0 +1,60 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Book Care Centre</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" name="date" id="date" class="premium-input" required="">
+            </div>
+
+            <div class="form-group">
+                <label>Number of Days</label>
+                <input type="number" name="days" class="premium-input" placeholder="e.g. 5" min="1" required="">
+            </div>
+
+            <div class="form-group">
+                <label>Pet Type</label>
+                <input type="text" name="pet" class="premium-input" placeholder="example: dog, cat etc" required="">
+            </div>
+
+            <div class="form-group">
+                <label>About your Pet</label>
+                <textarea name="about" class="premium-textarea"
+                    placeholder="Write about name, food preferences, timings etc." required=""></textarea>
+            </div>
+
+            <div class="form-submit-wrapper">
+                <input type="submit" value="CONFIRM BOOKING" class="btn-premium">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var eventDateInput = document.getElementById('date');
+        var today = new Date().toISOString().split('T')[0];
+        eventDateInput.setAttribute('min', today);
+
+        var form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+            var selectedDate = new Date(eventDateInput.value);
+            var currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0);
+
+            if (selectedDate < currentDate) {
+                alert("Date must be greater than or equal to today's date.");
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+{% endblock %}

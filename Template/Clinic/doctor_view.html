@@ -1,0 +1,54 @@
+{% extends 'Clinic/clinicHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h2 class="page-heading">Our Doctors</h2>
+
+  <div class="container">
+    {% if qy %}
+    <div class="row">
+      {% for data in qy %}
+      <div class="col-md-4" style="margin-bottom: 30px;">
+        <div class="card"
+          style="background: #fff; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); overflow: hidden; height: 100%; transition: transform 0.3s ease; border: none;">
+          <div style="padding: 25px; text-align: center;">
+            <div
+              style="width: 70px; height: 70px; background: rgba(244, 67, 54, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+              <i class="fa fa-user-md" style="color: #F44336; font-size: 32px;"></i>
+            </div>
+            <h4 style="color: #333; margin-bottom: 10px; font-weight: 700;">{{data.name}}</h4>
+            <p
+              style="background: #e3f2fd; display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; color: #1976d2; font-weight: 600; margin-bottom: 20px;">
+              {{data.specialization}}
+            </p>
+
+            <div
+              style="text-align: left; margin-bottom: 25px; color: #666; font-size: 0.95em; border-top: 1px solid #eee; padding-top: 15px;">
+              <p><i class="fa fa-envelope" style="width: 20px; color: #F44336;"></i> {{data.email}}</p>
+              <p><i class="fa fa-phone" style="width: 20px; color: #F44336;"></i> {{data.phonenumber}}</p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="/deletedoctor?id={{data.id}}" class="btn btn-outline-danger"
+                style="border-radius: 6px; font-weight: 600;">
+                <i class="fa fa-trash"></i> REMOVE DOCTOR
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-user-md" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No doctors registered in your clinic.</p>
+      <a href="/vetDoctor_register" class="btn-premium"
+        style="display: inline-block; width: auto; padding: 10px 25px; text-decoration: none; margin-top: 15px;">REGISTER
+        A DOCTOR</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

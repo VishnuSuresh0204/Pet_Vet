@@ -1,0 +1,58 @@
+{% extends 'Clinic/clinicHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h2 class="page-heading">Doctor Appointments</h2>
+
+  <div class="container">
+    {% if qy %}
+    <table class="table table-bordered table-striped page-table">
+      <thead>
+        <tr>
+          <th>Doctor Name</th>
+          <th>Customer Info</th>
+          <th>Appt Date</th>
+          <th>Appt Time</th>
+          <th>Booking Date</th>
+          <th>Current Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in qy %}
+        <tr>
+          <td style="font-weight: 600;">{{data.doctor.name}}</td>
+          <td>
+            <span style="display: block; font-weight: 600;">{{data.user.customer_name}}</span>
+            <span style="font-size: 0.85em; color: #666;">{{data.user.Address}}</span><br>
+            <span style="font-size: 0.85em; color: #F44336;"><i class="fa fa-phone"></i>
+              {{data.user.phonenumber}}</span>
+          </td>
+          <td>{{data.date}}</td>
+          <td>{{data.Time}}</td>
+          <td style="color: #888; font-size: 0.9em;">{{data.b_date}}</td>
+          <td>
+            {% if data.status == 'Booked' %}
+            <div style="display: flex; gap: 8px;">
+              <a href="\Acceptbook?id={{data.id}}" class="btn btn-sm btn-success" style="font-weight: 600;">ACCEPT</a>
+              <a href="\Rejectbook?=id={{data.id}}" class="btn btn-sm btn-danger" style="font-weight: 600;">REJECT</a>
+            </div>
+            {% else %}
+            <span class="badge"
+              style="background: #eee; color: #666; padding: 6px 12px; border-radius: 4px;">{{data.status|upper}}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-stethoscope" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No doctor bookings found.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

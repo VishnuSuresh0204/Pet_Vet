@@ -1,0 +1,60 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+<div class="team agileits">
+  <h3 class="agileits-title w3title2">Veterinary Doctors</h3>
+
+  <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    {% for data in qry %}
+
+    <div
+      style="
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        width: 300px;
+        margin: 20px;
+        text-align: center;
+      "
+    >
+      <h4>Dr.{{data.name}}</h4>
+      <p><strong>Name:</strong> {{data.name}}</p>
+      <p><strong>Email:</strong> {{data.email}}</p>
+      <p><strong>Address:</strong>{{data.location}}</p>
+      <p><strong>Phonenumber:</strong>{{data.phonenumber}}</p>
+
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <a
+          href="\bookdoctor?id={{data.id}}"
+          style="
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          BOOK
+        </a>
+        <!-- <a
+          href="\complaint_D?id={{data.id}}"
+          style="
+            background-color: #ff5252;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          COMPLAINT
+        </a> -->
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

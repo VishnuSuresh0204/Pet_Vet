@@ -1,0 +1,65 @@
+{% extends 'customer/userHome.html' %} {% load static %}
+{% block header %}
+<div>
+  <h3 class="page-heading">Doctor Booking</h3>
+  <div class="inner_content_info_agileits">
+    <div class="container">
+      <div class="tittle_head_w3ls">
+
+        {% if qy %}
+        <table class="table table-bordered table-striped page-table">
+          <thead>
+            <tr>
+              <th>Doctor Name</th>
+              <th>Clinic</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Booking Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in qy %}
+
+            <tr>
+              <td>{{data.doctor.name}}</td>
+              <td>{{data.doctor.clinic.clinic_name }}</td>
+              <td>{{data.date}}</td>
+              <td>{{data.Time}}</td>
+              <td>{{data.b_date}}</td>
+
+              {% if data.status == 'Accepted' %}
+              <td>
+                <a type="button" class="btn btn-success" href="\doctorbookingpayment?id={{data.id}}">Pay</a>
+                <a type="button" class="btn btn-danger" href="\canceldoctorbooking?id={{data.id}}">Cancel</a>
+              </td>
+
+              {% elif data.status != 'paid' %}
+              <td>
+                <a type="button" class="btn btn-danger" href="\canceldoctorbooking?id={{data.id}}">Cancel</a>
+              </td>
+              {% else %}
+              <td>
+                {{data.status}}
+              </td>
+              {% endif %}
+              <td>
+                <a type="button" class="btn btn-primary" href="\feedback_clinic?id={{data.id}}">Feedback</a>
+              </td>
+
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="empty-state">No data found.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+</div>
+{% endblock %}

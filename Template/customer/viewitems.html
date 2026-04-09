@@ -1,0 +1,46 @@
+{% extends 'customer/userHome.html' %} {% load static %}
+{% block header %}
+
+<div>
+  <h3 class="page-heading">Purchase Details</h3>
+  <div class="inner_content_info_agileits">
+    <div class="container">
+      <div class="tittle_head_w3ls">
+
+        {% if data %}
+        <table class="table table-bordered table-striped page-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Rate</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in data %}
+
+            <tr>
+              <td>{{ d.date }}</td>
+              <td>{{ d.product.name }}</td>
+              <td>{{ d.product.cost }}</td>
+              <td>{{ d.qty }}</td>
+              <td>{{ d.amt }}</td>
+              <td>{{ d.status}}</td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p class="empty-state">No items purchased.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'Admin/adminHome.html' %} {% load static %} {% block header %}
+<div>
+  <h2
+    style="
+      text-align: center;
+      margin: 20px auto;
+      text-decoration: underline;
+      color: red;
+    "
+  >
+    Complaints
+  </h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px">
+  <div class="container">
+    <div class="tittle_head_w3ls">
+      {% if qry %}
+      <table class="table">
+        <tr>
+          <th>Customer Name</th>
+          <th>Date</th>
+          <th>Complaint</th>
+        </tr>
+        {% for data in qry %}
+
+        <tr>
+          <td>{{data.complainter.customer_name}}</td>
+          <td>{{data.Date}}</td>
+          <td>{{data.complaint}}</td>
+        </tr>
+
+        {% endfor %}
+        <!-- Add more rows as needed -->
+      </table>
+      {% else %}
+      <p>No datas</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

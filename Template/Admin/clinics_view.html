@@ -1,0 +1,83 @@
+{% extends 'Admin/adminHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h2 class="page-heading">Veterinary Clinic Administration</h2>
+
+  <div class="container">
+    {% if qry %}
+    <div class="table-responsive">
+      <table class="table page-table">
+        <thead>
+          <tr>
+            <th>Clinic Details</th>
+            <th>Owner & Contact</th>
+            <th>Professional ID</th>
+            <th>Status & Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in qry %}
+          <tr>
+            <td>
+              <div style="font-weight: 600; color: #333; margin-bottom: 4px;">{{data.clinic_name}}</div>
+              <div style="font-size: 0.85em; color: #666; max-width: 250px;">{{data.Address}}</div>
+            </td>
+            <td>
+              <div style="font-weight: 600; color: #333; margin-bottom: 2px;">{{data.owned_by}}</div>
+              <div style="font-size: 0.85em; color: #666;">{{data.email}}</div>
+              <div style="font-size: 0.85em; color: #F44336; margin-top: 2px;">
+                <i class="fa fa-phone"></i> {{data.phonenumber}}
+              </div>
+            </td>
+            <td>
+              <div style="font-size: 0.85em; color: #666; margin-bottom: 4px;">License Number:</div>
+              <div style="font-weight: 600; color: #333;">{{data.license_no}}</div>
+            </td>
+            <td>
+              <div style="margin-bottom: 10px;">
+                {% if data.user.is_active == 0 %}
+                <span class="badge" style="background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2;">Pending
+                  Verification</span>
+                {% elif data.user.is_active == 1 %}
+                <span class="badge"
+                  style="background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;">Certified</span>
+                {% else %}
+                <span class="badge"
+                  style="background: #fafafa; color: #9e9e9e; border: 1px solid #eeeeee;">Inactive</span>
+                {% endif %}
+              </div>
+
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                {% if data.user.is_active == 0 %}
+                <a href="/Approveclinic?id={{data.user.id}}&status=1" class="btn btn-sm btn-success"
+                  style="border-radius: 4px; font-weight: 600;">APPROVE</a>
+                <a href="/Approveclinic?id={{data.user.id}}&status=0" class="btn btn-sm btn-outline-danger"
+                  style="border-radius: 4px; font-weight: 600;">REJECT</a>
+                {% endif %}
+
+                {% if data.user.is_active == 1 %}
+                <a href="/delete_clinic?id={{data.user.id}}" class="btn btn-sm btn-link"
+                  style="color: #F44336; font-size: 0.85em; font-weight: 600; padding: 0;"
+                  onclick="return confirm('Confirm permanent removal of this clinic?')">
+                  <i class="fa fa-trash"></i> DELETE
+                </a>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-stethoscope" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No veterinary clinics found in the system.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

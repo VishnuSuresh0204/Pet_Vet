@@ -1,0 +1,25 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Register Complaint</h2>
+
+        <form action="#" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Complaint Details</label>
+                <textarea name="complaint" class="premium-textarea"
+                    placeholder="Describe the issue you've encountered..." required=""></textarea>
+            </div>
+
+            <div class="form-submit-wrapper">
+                <input type="submit" value="SUBMIT COMPLAINT" class="btn-premium">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,180 @@
+/* 
+   Premium Pet Lover Design System
+   A warm, modern, and inviting aesthetic for Paw Pal
+*/
+
+:root {
+    --pet-coral: #FF6600;
+    /* Vibrant Orange for energy */
+    --pet-coral-light: #FF8533;
+    --pet-mustard: #FFB74D;
+    --pet-mint: #4CAF50;
+    --pet-dark: #2D3436;
+    --pet-gray: #636E72;
+    --pet-light-bg: #FDFDFD;
+    --pet-peach-bg: #FFF5F0;
+    --pet-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --pet-radius: 20px;
+    --font-heading: 'Dosis', sans-serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+/* Global Polish */
+body {
+    background-color: var(--pet-light-bg);
+    color: var(--pet-dark);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--pet-dark);
+}
+
+/* Premium Navbar */
+.header {
+    background: white !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    padding: 1em 0 !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.agileits-logo h1 a {
+    border: none !important;
+    color: var(--pet-coral) !important;
+    font-size: 1.2em !important;
+    padding: 0 !important;
+    letter-spacing: 2px !important;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: var(--pet-gray) !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase;
+    font-size: 0.9em !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li.active>a {
+    color: var(--pet-coral) !important;
+}
+
+/* Hero Section Upgrade */
+.w3ls-banner {
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+    overflow: hidden;
+}
+
+.banner-text h1,
+.banner-text p {
+    text-shadow: none !important;
+}
+
+/* Cards & Containers */
+.form-card,
+.page-table,
+.inner_content_info_agileits {
+    background: white !important;
+    border-radius: var(--pet-radius) !important;
+    box-shadow: var(--pet-shadow) !important;
+    border: 1px solid rgba(0, 0, 0, 0.02) !important;
+    overflow: hidden;
+}
+
+/* Premium Buttons */
+.btn-premium {
+    background: var(--pet-coral) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 107, 97, 0.3);
+    color: white !important;
+}
+
+/* UI Elements */
+.badge {
+    padding: 6px 12px !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    font-size: 0.8em !important;
+    text-transform: uppercase;
+}
+
+.page-heading {
+    color: var(--pet-coral);
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.page-heading:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--pet-mustard);
+    border-radius: 2px;
+}
+
+/* Table Enhancements */
+.page-table {
+    margin-top: 20px;
+}
+
+.page-table th {
+    background: #f8f9fa !important;
+    color: var(--pet-gray) !important;
+    text-transform: uppercase;
+    font-size: 0.85em !important;
+    letter-spacing: 1px;
+    border: none !important;
+    padding: 15px 20px !important;
+}
+
+.page-table td {
+    padding: 20px !important;
+    vertical-align: middle !important;
+    border-top: 1px solid #f1f1f1 !important;
+}
+
+/* Footer Overhaul */
+.footer {
+    background: var(--pet-dark) !important;
+    padding: 60px 0 0 !important;
+}
+
+.footer-top {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 40px !important;
+}
+
+.footer-bottom {
+    background: #1a1e21 !important;
+    padding: 20px 0 !important;
+}

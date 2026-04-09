@@ -1,0 +1,38 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper" style="padding-top: 50px; padding-bottom: 80px;">
+    <div class="form-card" style="max-width: 550px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div
+                style="width: 70px; height: 70px; background: rgba(244, 67, 54, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                <i class="fa fa-commenting-o" style="color: #F44336; font-size: 30px;"></i>
+            </div>
+            <h2 class="form-title" style="margin-bottom: 5px;">Rate Your Experience</h2>
+            <p style="color: #666; font-size: 0.95em;">We'd love to hear your thoughts about
+                <strong>{{target_name}}</strong> ({{type}})</p>
+        </div>
+
+        <form action="#" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label style="font-weight: 600; color: #444; margin-bottom: 10px; display: block;">Your Message</label>
+                <textarea name="feedback" class="premium-textarea"
+                    placeholder="Tell us what you liked or what we can improve..."
+                    style="min-height: 150px; resize: none;" required=""></textarea>
+                <small style="color: #999; font-size: 0.8em; margin-top: 5px; display: block;">Your feedback helps us
+                    provide better care for all pets.</small>
+            </div>
+
+            <div class="form-submit-wrapper" style="margin-top: 30px;">
+                <button type="submit" class="btn-premium" style="width: 100%; letter-spacing: 1px;">
+                    <i class="fa fa-paper-plane" style="margin-right: 8px;"></i> SUBMIT FEEDBACK
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

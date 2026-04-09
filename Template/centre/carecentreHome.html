@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Paw Pal | Care Centre Management</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+	<!-- Core Assets -->
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+	<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/premium-petlover.css' %}" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+	<!-- Navbar -->
+	<header class="header">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-3">
+					<div class="agileits-logo">
+						<h1><a href="/carecentreHome">Paw Pal Centre</a></h1>
+					</div>
+				</div>
+				<div class="col-md-9 text-right">
+					<nav class="navbar navbar-default" style="display: inline-block;">
+						<ul class="nav navbar-nav cl-effect-16">
+							<li><a href="/carecentreHome">Home</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage <span
+										class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/addservice_centre">Add New Service</a></li>
+									<li><a href="/viewaddservice_centre">Service List</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bookings <span
+										class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/viewbookcarecentre_centre">Shelter Stays</a></li>
+									<li><a href="/viewservicebooking_centre">Daily Services</a></li>
+								</ul>
+							</li>
+							<li><a href="/viewfeedback_centre">Reviews</a></li>
+							<li><a href="/login" class="btn-premium"
+									style="padding: 8px 20px !important; margin-left: 20px; color: white !important;">Exit</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	{% block header %}
+	<div class="container" style="margin-top: 40px;">
+		<h2 class="page-heading">Care Centre Dashboard</h2>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="form-card" style="padding: 40px;">
+					<h3 style="margin-bottom: 20px; color: var(--pet-coral);">Growing Your Community</h3>
+					<p style="color: #666; font-size: 1.1em; line-height: 1.8;">
+						Welcome to your management hub. From here, you can track all incoming shelter requests,
+						manage your professional services, and respond to pet owners' feedback.
+						A high level of activity on your services ensures visibility in the customer search!
+					</p>
+					<div style="margin-top: 30px; display: flex; gap: 15px;">
+						<a href="/viewbookcarecentre_centre" class="btn-premium" style="width: auto;">View Bookings</a>
+						<a href="/addservice_centre" class="btn-premium"
+							style="background: var(--pet-mustard) !important; width: auto;">New Service</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-card text-center" style="padding: 40px; background: var(--pet-peach-bg) !important;">
+					<i class="fa fa-star" style="font-size: 40px; color: var(--pet-mustard); margin-bottom: 15px;"></i>
+					<h4>Service Excellence</h4>
+					<p style="color: #666; font-size: 0.9em;">Regularly check your feedback to maintain top-tier
+						ratings.</p>
+					<a href="/viewfeedback_centre" class="btn-premium" style="width: 100%; margin-top: 15px;">View
+						Feedback</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+
+	<footer class="footer" style="margin-top: 100px;">
+		<div class="footer-bottom">
+			<div class="container text-center">
+				<p style="color: rgba(255,255,255,0.4); margin: 0; font-size: 0.8em;">&copy; 2023 Paw Pal Centre |
+					Professional Care Partner</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>

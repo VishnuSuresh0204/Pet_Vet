@@ -1,0 +1,77 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+	<div class="form-card" style="max-width: 500px;">
+		<h2 class="form-title">Secure Payment</h2>
+		<div style="text-align: center; margin-bottom: 30px;">
+			<img src="https://img.icons8.com/color/96/000000/visa.png" style="width: 50px; margin-right: 10px;" />
+			<img src="https://img.icons8.com/color/96/000000/mastercard.png" style="width: 50px; margin-right: 10px;" />
+			<img src="https://img.icons8.com/color/96/000000/chip-card.png" style="width: 50px;" />
+		</div>
+
+		<form class="card-details" method="post">
+			{% csrf_token %}
+
+			<div class="form-group">
+				<label>Cardholder's Name</label>
+				<input type="text" name="name" class="premium-input" placeholder="Full Name on Card" required>
+			</div>
+
+			<div class="form-group">
+				<label>Card Number</label>
+				<input type="text" name="card-num" class="premium-input" placeholder="1234 5678 9012 3457" id="cno"
+					minlength="19" maxlength="19" required>
+			</div>
+
+			<div class="row">
+				<div class="col-md-7">
+					<div class="form-group">
+						<label>Expiration Date</label>
+						<input type="text" name="exp" class="premium-input" placeholder="MM/YYYY" id="exp" minlength="7"
+							maxlength="7" required>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">
+						<label>CVV</label>
+						<input type="password" name="cvv" class="premium-input" placeholder="●●●" minlength="3"
+							maxlength="3" required>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-submit-wrapper">
+				<button type="submit" class="btn-premium">PAY NOW</button>
+			</div>
+
+			<p style="text-align: center; font-size: 0.85em; color: #999; margin-top: 20px;">
+				<i class="fa fa-lock"></i> Your payment information is encrypted and secure.
+			</p>
+		</form>
+	</div>
+</div>
+
+<script>
+	// Simple formatting for card number
+	document.getElementById('cno').addEventListener('input', function (e) {
+		let target = e.target;
+		let position = target.selectionEnd;
+		let length = target.value.length;
+
+		target.value = target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+
+		target.selectionEnd = position + (target.value.length > length ? 1 : 0);
+	});
+
+	// Formatting for expiration date
+	document.getElementById('exp').addEventListener('input', function (e) {
+		let v = this.value;
+		if (v.match(/^\d{2}$/) !== null) {
+			this.value = v + '/';
+		}
+	});
+</script>
+
+{% endblock %}

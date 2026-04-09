@@ -1,0 +1,53 @@
+{% extends 'dogwalker/dogwalkerHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Update Profile</h2>
+
+        <div class="agileits-login">
+            {% for data in qy %}
+            <form action="#" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" class="premium-input" placeholder="Your name" required=""
+                        value="{{data.name}}">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="Email" class="premium-input" placeholder="Email" required=""
+                        value="{{data.email}}" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="Password" class="premium-input" placeholder="Password" required=""
+                        value="{{data.password}}" />
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea name="Address" class="premium-textarea" placeholder="Your address"
+                        required="">{{data.Address}}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" name="phone" class="premium-input" placeholder="Phone" required=""
+                        value="{{data.phonenumber}}">
+                </div>
+
+                <div class="form-submit-wrapper">
+                    <input type="submit" value="UPDATE DETAILS" class="btn-premium">
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

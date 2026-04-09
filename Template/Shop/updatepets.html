@@ -1,0 +1,40 @@
+{% extends 'Shop/shopHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Update Pet Details</h2>
+
+        <div class="agileits-login">
+            {% for data in qy %}
+            <form action="#" method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Stock Quantity</label>
+                            <input type="number" name="stock" class="premium-input" placeholder="0" min="0" required=""
+                                value="{{data.stock}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Price (₹)</label>
+                            <input type="number" name="cost" class="premium-input" placeholder="0.00" min="0" step="1"
+                                required="" value="{{data.cost}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-submit-wrapper">
+                    <input type="submit" value="UPDATE PET" class="btn-premium">
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

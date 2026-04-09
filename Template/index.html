@@ -1,0 +1,270 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Paw Pal | Premium Veterinary & Pet Care</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+	<!-- Core Assets -->
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+	<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet"> <!-- Legacy Support -->
+	<link href="{% static 'css/premium-petlover.css' %}" rel="stylesheet"> <!-- New Premium Style -->
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+		rel="stylesheet">
+
+	<style>
+		.hero-section {
+			background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
+			url('{% static "images/1.jpg" %}') no-repeat center center;
+			background-size: cover;
+			height: 90vh;
+			display: flex;
+			align-items: center;
+			color: white;
+			text-align: left;
+			border-bottom-left-radius: 100px;
+		}
+
+		.hero-content h1 {
+			font-size: 4.5em;
+			margin-bottom: 20px;
+			color: white !important;
+		}
+
+		.hero-content p {
+			font-size: 1.5em;
+			margin-bottom: 40px;
+			max-width: 600px;
+			font-weight: 300;
+		}
+
+		.service-card {
+			background: white;
+			padding: 40px;
+			border-radius: 30px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+			transition: all 0.3s ease;
+			text-align: center;
+			border: 1px solid #f0f0f0;
+			margin-bottom: 30px;
+		}
+
+		.service-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 20px 40px rgba(255, 102, 0, 0.1);
+			border-color: var(--pet-coral);
+		}
+
+		.service-icon {
+			font-size: 40px;
+			color: var(--pet-coral);
+			margin-bottom: 20px;
+			display: block;
+		}
+
+		.about-image {
+			border-radius: 50% 20% 50% 20%;
+			overflow: hidden;
+			box-shadow: var(--pet-shadow);
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Navbar -->
+	<header class="header">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-3">
+					<div class="agileits-logo">
+						<h1><a href="/">Paw Pal</a></h1>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<nav class="navbar navbar-default">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse" id="main-nav">
+							<ul class="nav navbar-nav cl-effect-16">
+								<li><a href="/" class="active">Home</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registration <span
+											class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="/carecentre_reg">Petcare Centres</a></li>
+										<li><a href="/dogwalker_reg">Dogwalkers</a></li>
+										<li><a href="/cus_register">Customers</a></li>
+									</ul>
+								</li>
+								<li><a href="/login">Sign In</a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Hero Section -->
+	<div class="hero-section">
+		<div class="container">
+			<div class="hero-content">
+				<h1>Love. Care.<br>Connection.</h1>
+				<p style="color: #ff6b61;">Connecting your furry friends with the best care in the neighborhood. Your trusted companion for
+					every wag and purr.</p>
+				<a href="/cus_register" class="btn-premium">Get Started Today</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Quick Features -->
+	<div class="container" style="margin-top: -50px; position: relative; z-index: 10;">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="service-card">
+					<i class="fa fa-stethoscope service-icon"></i>
+					<h4>Professional Vet Care</h4>
+					<p>Access to top-rated clinics and certified veterinary doctors.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="service-card">
+					<i class="fa fa-home service-icon"></i>
+					<h4>Loving Shelters</h4>
+					<p>Safe and comfortable environments for your pets to stay.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="service-card">
+					<i class="fa fa-paw service-icon"></i>
+					<h4>Active Walking</h4>
+					<p>Certified walkers to keep your pets happy and healthy.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Welcome / About -->
+	<div class="welcome" style="padding: 100px 0;">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="about-image">
+						<img src="{% static 'images/g1.jpg' %}" alt="About Us" class="img-responsive">
+					</div>
+				</div>
+				<div class="col-md-6" style="padding-left: 50px;">
+					<h3 class="page-heading">Your Pet, Our Priority</h3>
+					<p style="font-size: 1.1em; color: #666; margin-bottom: 25px;">
+						Paw Pal is more than just a platform; it's a community built by pet lovers, for pet lovers.
+						We understand that pets are family, and they deserve nothing but the best.
+					</p>
+					<p style="color: #888;">
+						Whether you're looking for a routine check-up, a specialized dog walker, or a premium pet shop,
+						our curated network of professionals is here to support you every step of the way.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Services Grid -->
+	<div class="services" style="background: var(--pet-peach-bg); padding: 100px 0; border-radius: 100px 100px 0 0;">
+		<div class="container">
+			<div style="text-align: center; margin-bottom: 60px;">
+				<h3 class="page-heading">Our Network</h3>
+				<p>Everything your pet needs, all in one place.</p>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div style="text-align: center; padding: 20px;">
+						<i class="fa fa-hospital-o"
+							style="font-size: 3em; color: var(--pet-mustard); margin-bottom: 15px; display: block;"></i>
+						<h5 style="font-weight: 700;">Clinics</h5>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div style="text-align: center; padding: 20px;">
+						<i class="fa fa-shopping-bag"
+							style="font-size: 3em; color: var(--pet-mint); margin-bottom: 15px; display: block;"></i>
+						<h5 style="font-weight: 700;">Pet Shops</h5>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div style="text-align: center; padding: 20px;">
+						<i class="fa fa-child"
+							style="font-size: 3em; color: var(--pet-coral); margin-bottom: 15px; display: block;"></i>
+						<h5 style="font-weight: 700;">Walkers</h5>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div style="text-align: center; padding: 20px;">
+						<i class="fa fa-building-o"
+							style="font-size: 3em; color: var(--pet-dark); margin-bottom: 15px; display: block;"></i>
+						<h5 style="font-weight: 700;">Care Centres</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h2 style="color: white; font-family: var(--font-heading); margin-bottom: 20px;">Paw Pal</h2>
+						<p style="color: #adb5bd; max-width: 400px; font-size: 0.9em;">
+							Creating a world where every pet is loved, healthy, and happy.
+							Connecting owners with excellence in pet care.
+						</p>
+					</div>
+					<div class="col-md-3">
+						<h5 style="color: white; margin-bottom: 20px;">Quick Links</h5>
+						<ul style="list-style: none; color: #adb5bd; font-size: 0.9em;">
+							<li style="margin-bottom: 10px;"><a href="/login" style="color: inherit;">Sign In</a></li>
+							<li style="margin-bottom: 10px;"><a href="/cus_register" style="color: inherit;">Join as
+									Customer</a></li>
+							<li style="margin-bottom: 10px;"><a href="/carecentre_reg" style="color: inherit;">Register
+									Centre</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h5 style="color: white; margin-bottom: 20px;">Contact Us</h5>
+						<p style="color: #adb5bd; font-size: 0.9em;">
+							<i class="fa fa-envelope-o" style="margin-right: 10px;"></i> support@pawpal.com<br>
+							<i class="fa fa-phone" style="margin-right: 10px;"></i> +1 (800) PAW-HELP
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container text-center">
+				<p style="color: rgba(255,255,255,0.4); margin: 0; font-size: 0.8em;">
+					&copy; 2023 Paw Pal. All rights reserved. Crafted with <i class="fa fa-heart"
+						style="color: #ff6b61;"></i> for pets.
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>

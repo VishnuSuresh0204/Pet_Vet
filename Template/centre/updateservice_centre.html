@@ -1,0 +1,35 @@
+{% extends 'centre/carecentreHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Update Centre Service</h2>
+
+        <div class="agileits-login">
+            {% for data in qy %}
+            <form action="#" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Service Rate (₹)</label>
+                    <input type="number" name="rate" class="premium-input" placeholder="0.00" min="0" required=""
+                        value="{{data.rate}}">
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" class="premium-textarea" placeholder="Update service details..."
+                        required="">{{data.description}}</textarea>
+                </div>
+
+                <div class="form-submit-wrapper">
+                    <input type="submit" value="UPDATE SERVICE" class="btn-premium">
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

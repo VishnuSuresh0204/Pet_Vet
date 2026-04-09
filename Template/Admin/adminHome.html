@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Paw Pal | Admin Master Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+	<!-- Core Assets -->
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+	<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/premium-petlover.css' %}" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+		rel="stylesheet">
+
+	<style>
+		.admin-sidebar {
+			background: #fff;
+			padding: 20px;
+			border-radius: var(--pet-radius);
+			box-shadow: var(--pet-shadow);
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Navbar -->
+	<header class="header">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-3">
+					<div class="agileits-logo">
+						<h1><a href="/adminHome">Paw Pal Admin</a></h1>
+					</div>
+				</div>
+				<div class="col-md-9 text-right">
+					<nav class="navbar navbar-default" style="display: inline-block;">
+						<ul class="nav navbar-nav cl-effect-16">
+							<li><a href="/adminHome">Dashboard</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Entity Control <span
+										class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/view_customer_admin">User Management</a></li>
+									<li><a href="/view_carecentre_admin">Care Centres</a></li>
+									<li><a href="/view_dogwalker_admin">Dog Walkers</a></li>
+								</ul>
+							</li>
+							<li><a href="/viewcomplaint">Complaints</a></li>
+							<li><a href="/login" class="btn-premium"
+									style="padding: 8px 20px !important; margin-left: 20px; color: white !important;">Log
+									Out</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	{% block header %}
+	<div class="container" style="margin-top: 40px;">
+		<h2 class="page-heading">System Overview</h2>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-card" style="padding: 30px; text-align: center;">
+					<i class="fa fa-users" style="font-size: 30px; color: var(--pet-coral); margin-bottom: 15px;"></i>
+					<h4>User Ecosystem</h4>
+					<p style="color: #666;">Manage and monitor all platform users and providers.</p>
+					<a href="/view_customer_admin" class="btn-premium"
+						style="width: auto; padding: 8px 20px !important; margin-top: 15px;">View Users</a>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-card" style="padding: 30px; text-align: center;">
+					<i class="fa fa-exclamation-triangle"
+						style="font-size: 30px; color: var(--pet-mustard); margin-bottom: 15px;"></i>
+					<h4>Resolution Centre</h4>
+					<p style="color: #666;">Address community concerns and complaints effectively.</p>
+					<a href="/viewcomplaint" class="btn-premium"
+						style="width: auto; padding: 8px 20px !important; background: var(--pet-mustard) !important; margin-top: 15px;">Open
+						Tickets</a>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-card" style="padding: 30px; text-align: center;">
+					<i class="fa fa-line-chart"
+						style="font-size: 30px; color: var(--pet-mint); margin-bottom: 15px;"></i>
+					<h4>Growth Metrics</h4>
+					<p style="color: #666;">View detailed analytics on platform growth and activity.</p>
+					<button class="btn-premium"
+						style="width: auto; padding: 8px 20px !important; background: var(--pet-mint) !important; margin-top: 15px;">Analytics</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+
+	<!-- Footer -->
+	<footer class="footer" style="margin-top: 100px;">
+		<div class="footer-bottom">
+			<div class="container text-center">
+				<p style="color: rgba(255,255,255,0.4); margin: 0; font-size: 0.8em;">
+					&copy; 2023 Paw Pal Admin | Secure Infrastructure
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>

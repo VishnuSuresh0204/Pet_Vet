@@ -1,0 +1,44 @@
+{% extends 'centre/carecentreHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Update Working Hours</h2>
+
+        <div class="agileits-login">
+            {% for data in qy %}
+            <form action="#" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Day of Week</label>
+                    <input type="text" name="day" class="premium-input" placeholder="e.g. Monday" required=""
+                        value="{{data.day}}">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Start Time (Current: {{data.starttime}})</label>
+                            <input type="time" name="start" class="premium-input" required="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>End Time (Current: {{data.Endtime}})</label>
+                            <input type="time" name="end" class="premium-input" required="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-submit-wrapper">
+                    <input type="submit" value="UPDATE HOURS" class="btn-premium">
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

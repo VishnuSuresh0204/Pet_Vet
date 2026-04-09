@@ -1,0 +1,47 @@
+{% extends 'Clinic/clinicHome.html' %}
+{% load static %}
+
+{% for m in msg %}
+<script>alert('{{m}}')</script>
+{% endfor %}
+
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Doctor Registration</h2>
+
+        <form action="#" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Doctor's Name</label>
+                <input type="text" name="name" class="premium-input" placeholder="Full name of the vet"
+                    pattern="[a-zA-Z ]+" required="">
+            </div>
+
+            <div class="form-group">
+                <label>Register Number</label>
+                <input type="text" name="register" class="premium-input" placeholder="Medical registration number"
+                    required="">
+            </div>
+
+            <div class="form-group">
+                <label>Qualification</label>
+                <input type="text" name="qualification" class="premium-input" placeholder="e.g. BVSc & AH" required="">
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" name="phone" class="premium-input" placeholder="10-digit mobile number" required=""
+                    pattern="[7-9]{1}[0-9]{9}" maxlength="10">
+            </div>
+
+            <div class="form-submit-wrapper">
+                <input type="submit" value="REGISTER DOCTOR" class="btn-premium">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

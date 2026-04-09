@@ -1,0 +1,68 @@
+{% extends 'customer/userHome.html' %} {% load static %} 
+{% block header %}
+<div class="team agileits">
+  <div><h2 style="text-align: center;margin:20px auto;text-decoration: underline;color: red;">Veterinary doctors</h2>
+
+  <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    {% for data in doc %}
+
+    <div
+      style="
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        width: 300px;
+        margin: 20px;
+        text-align: center;
+      "
+    >
+      <h4>Dr.{{data.name}}</h4>
+      <!-- <p><strong>Name:</strong> {{data.name}}</p> -->
+      <p><strong>Qulification:</strong> {{data.qualification}}</p>
+      <p><strong>Register Number:</strong>{{data.register_no}}</p>
+      <p><strong>Phonenumber:</strong>{{data.phonenumber}}</p>
+      
+
+      
+        {% if current_day == 'Sunday' %}
+      <p id="availability"><strong>Status:</strong><span style="color: red;">Unavailable</span></p>
+      {% else %}
+      <p id="availability"><strong>Status:</strong><span style="color: green;" >Available</span></p><br>
+      <a
+          href="\bookdoctor?id={{data.id}}"
+          style="
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          BOOK
+        </a>
+      {% endif %}
+      <!-- <div style="display: flex; justify-content: center; gap: 10px;margin-top: 10px;">
+        <a
+          href="\complaint_D?id={{data.id}}"
+          style="
+            background-color: #ff5252;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          COMPLAINT
+        </a>
+      </div> -->
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+  {% endblock %}
+

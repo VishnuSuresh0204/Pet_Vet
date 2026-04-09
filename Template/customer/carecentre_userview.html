@@ -1,0 +1,100 @@
+{% extends 'customer/userHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="dashboard-banner" style="background: var(--pet-peach-bg);">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <h2 class="page-heading" style="margin-bottom: 0;">Pet Care Centres</h2>
+        <p style="color: #666; margin-top: 10px;">Premium grooming, boarding, and daycare for your pets.</p>
+      </div>
+
+      <div class="search-box"
+        style="background: white; padding: 10px; border-radius: 50px; box-shadow: var(--pet-shadow); display: flex; align-items: center; min-width: 400px; max-width: 100%;">
+        <i class="fa fa-map-marker" style="color: var(--pet-coral); margin-left: 20px; font-size: 1.2em;"></i>
+        <form method="get" action="/userview_centre/" style="display: flex; flex: 1; align-items: center;">
+          <input type="text" name="district" placeholder="Search by district..."
+            style="border: none; padding: 10px 15px; flex: 1; font-size: 1em; outline: none; background: transparent;"
+            value="{{ request.GET.district }}">
+          <button type="submit" class="btn-premium" style="width: auto; padding: 8px 25px !important; margin: 0;">
+            SEARCH
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 50px; margin-bottom: 100px;">
+  {% if qry %}
+  <div class="row">
+    {% for data in qry %}
+    <div class="col-md-4" style="margin-bottom: 30px;">
+      <div class="form-card" style="padding: 0; background: #fff; height: 100%;">
+        <div style="background: var(--pet-mint); height: 8px;"></div>
+        <div style="padding: 30px;">
+          <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <div
+              style="width: 60px; height: 60px; background: rgba(76, 175, 80, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+              <i class="fa fa-building-o" style="color: var(--pet-mint); font-size: 24px;"></i>
+            </div>
+            <div>
+              <h4 style="margin: 0; font-weight: 700;">{{data.carecentre}}</h4>
+              <p style="margin: 0; font-size: 0.8em; color: #999;">Managed by {{data.owner_name}}</p>
+            </div>
+          </div>
+
+          <div
+            style="margin-bottom: 25px; color: #666; font-size: 0.9em; background: #fcfcfc; padding: 15px; border-radius: 12px; border: 1px dashed #eee;">
+            <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+              <i class="fa fa-map-marker" style="width: 20px; color: var(--pet-mint); margin-top: 3px;"></i>
+              <span>{{data.Address}}</span>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+              <i class="fa fa-phone" style="width: 20px; color: var(--pet-mint);"></i>
+              <span>{{data.phonenumber}}</span>
+            </div>
+            <div style="display: flex; align-items: center;">
+              <i class="fa fa-certificate" style="width: 20px; color: var(--pet-mint);"></i>
+              <span>License: {{data.license_no}}</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="/centre_detail?id={{data.id}}" class="btn-premium"
+              style="width: 100%; justify-content: center; background: var(--pet-mint) !important;">
+              <i class="fa fa-list-ul"></i> EXPLORE SERVICES
+            </a>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <a href="/bookcarecentre?id={{data.id}}" class="btn-premium"
+                style="justify-content: center; background: var(--pet-coral) !important; padding: 10px !important;">
+                <i class="fa fa-calendar-check-o"></i> BOOK STAYS
+              </a>
+              <a href="/feedback_centre?id={{data.id}}" class="btn-premium"
+                style="justify-content: center; background: var(--pet-gray) !important; padding: 10px !important;">
+                <i class="fa fa-star"></i> REVIEWS
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="text-align: center; padding: 100px 0;">
+    <div
+      style="width: 100px; height: 100px; background: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
+      <i class="fa fa-building-o" style="font-size: 50px; color: #ccc;"></i>
+    </div>
+    <h3 style="color: #666;">No Centres Available</h3>
+    <p style="color: #999;">We didn't find any care centres in "{{ request.GET.district }}". Try checking other
+      districts!</p>
+    <a href="/userview_centre/" class="btn-premium"
+      style="width: auto; background: var(--pet-gray) !important; margin-top: 20px;">VIEW ALL CENTRES</a>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

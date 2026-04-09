@@ -1,0 +1,118 @@
+{% extends 'Shop/shopHome.html' %} {% load static %} 
+{% block header %}
+
+<div>
+    <h2 style="text-align: center;">Adopted Pets</h2>
+</div>
+
+
+  
+    <div class="container">
+      <div class="tittle_head_w3ls">
+       
+        {% if qy %}
+        <table
+          style="
+          margin-top: 40px;
+          margin-bottom: 100px;
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+            padding: 8px;
+          "
+        >
+          <tr style="border: 1px solid black; padding: 8px">
+            <th
+              style="
+                background-color: #f2f2f2;
+                border: 1px solid black;
+                padding: 8px;
+              "
+            >
+            Customer Name
+            </th>
+            <th
+              style="
+                background-color: #f2f2f2;
+                border: 1px solid black;
+                padding: 8px;
+              "
+            >
+            Date
+            </th>
+            <th
+              style="
+                background-color: #f2f2f2;
+                border: 1px solid black;
+                padding: 8px;
+              "
+            >
+            Product
+            </th>
+            <th
+              style="
+                background-color: #f2f2f2;
+                border: 1px solid black;
+                padding: 8px;
+              "
+            >
+            Rate
+            </th>
+            
+            <th
+              style="
+                background-color: #f2f2f2;
+                border: 1px solid black;
+                padding: 8px;
+              "
+            >
+            Status
+            </th>
+           
+          </tr>
+          {% for d in qy %}
+          
+          <tr>
+            <td style="border: 1px solid black; padding: 8px">
+              {{ d.user.customer_name }}
+          </td>
+            <td style="border: 1px solid black; padding: 8px">
+                {{ d.adopted_date }}
+            </td>
+            <td style="border: 1px solid black; padding: 8px">
+                {{ d.pet.name }}
+            </td>
+            <td style="border: 1px solid black; padding: 8px">
+                {{ d.pet.cost }}
+            </td>
+            
+            <!-- <td style="border: 1px solid black; padding: 8px">
+                {{ d.status}}
+            </td> -->
+            {% if d.status == 'requested' %}
+            <td>
+                <a href="/acceptadoption?id={{ d.id }}" class="btn btn-warning">Accept</a>
+                <a href="/rejectadoption?id={{ d.id }}" class="btn btn-warning">Reject</a>
+              </td>
+              {% else %}
+              <td style="border: 1px solid black; padding: 8px">
+                {{ d.status}}
+            </td>
+            {% endif %}    
+        </tr>
+        
+        {% endfor %}
+        <!-- Add more rows as needed -->
+      </table>
+      {% else %}
+      <p>No Iems purchased</p>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+   
+  
+</div>
+
+{% endblock %}
+

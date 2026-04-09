@@ -1,0 +1,24 @@
+{% extends 'centre/carecentreHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="form-container-wrapper">
+    <div class="form-card">
+        <h2 class="form-title">Add Service Amount</h2>
+
+        <form action="#" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Service Rate (₹)</label>
+                <input type="number" name="amount" class="premium-input" placeholder="0.00" min="0" required="">
+            </div>
+
+            <div class="form-submit-wrapper">
+                <input type="submit" value="ADD AMOUNT" class="btn-premium">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

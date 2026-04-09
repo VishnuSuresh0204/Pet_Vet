@@ -1,0 +1,137 @@
+{% extends 'Shop/shopHome.html' %}
+{% load static %}
+{% for m in messages %}
+<script>
+	alert('{{m}}')
+</script>
+{% endfor %}
+
+{% block header %}
+
+<div class="team agileits">
+    <div class="team-info">
+        <div class="container">
+            <h3 class="w3agileits-title">Selling Details</h3>
+            <div class="inner_content_info_agileits">
+                <div class="container">
+                  <div class="tittle_head_w3ls">
+                   
+                    {% if data %}
+                    <table
+                      style="
+                      margin-top: 40px;
+                      margin-bottom: 100px;
+                        width: 100%;
+                        border-collapse: collapse;
+                        border: 1px solid black;
+                        padding: 8px;
+                      "
+                    >
+                      <tr style="border: 1px solid black; padding: 8px">
+                        <th
+                          style="
+                            background-color: #f2f2f2;
+                            border: 1px solid black;
+                            padding: 8px;
+                          "
+                        >
+                        Customer Name
+                        </th>
+                        <th
+                          style="
+                            background-color: #f2f2f2;
+                            border: 1px solid black;
+                            padding: 8px;
+                          "
+                        >
+                        Product Name
+                        </th>
+                        <!-- <th
+                          style="
+                            background-color: #f2f2f2;
+                            border: 1px solid black;
+                            padding: 8px;
+                          "
+                        >
+                        Price
+                        </th> -->
+                        <th
+                          style="
+                            background-color: #f2f2f2;
+                            border: 1px solid black;
+                            padding: 8px;
+                          "
+                        >
+                        Qty
+                        </th>
+                        <th
+                          style="
+                            background-color: #f2f2f2;
+                            border: 1px solid black;
+                            padding: 8px;
+                          "
+                        >
+                         Total Price
+                        </th>
+                        <th
+                        style="
+                          background-color: #f2f2f2;
+                          border: 1px solid black;
+                          padding: 8px;
+                        "
+                      >
+                       Date
+                      </th>
+                        <th
+                          style="
+                            background-color: #f2f2f2;
+                            border: 1px solid black;
+                            padding: 8px;
+                          "
+                        >
+                         Status
+                        </th>
+                       
+                      </tr>
+                      {% for d in data %}
+                      
+                      <tr>
+                        <td style="border: 1px solid black; padding: 8px">
+                            {{ d.order.customer.customer_name }}
+                        </td>
+                        <td style="border: 1px solid black; padding: 8px">
+                            {{ d.product.name }}
+                        </td>
+                        <!-- <td style="border: 1px solid black; padding: 8px">
+                            {{ d.product.cost }}
+                        </td> -->
+                        <td style="border: 1px solid black; padding: 8px">
+                            {{ d.qty }}
+                        </td>
+                        <td style="border: 1px solid black; padding: 8px">
+                            {{ d.amt }}
+                        </td>
+                        <td style="border: 1px solid black; padding: 8px">
+                            {{ d.date }}
+                        </td>
+                        <td style="border: 1px solid black; padding: 8px">
+                            {{ d.status }}
+                        </td>
+
+                    </tr>
+                    
+                    {% endfor %}
+                    <!-- Add more rows as needed -->
+                  </table>
+                  {% else %}
+                  <p>No Iems purchased</p>
+                  {% endif %}
+                </div>
+              </div>
+              </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

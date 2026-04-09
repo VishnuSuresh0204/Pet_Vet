@@ -1,0 +1,79 @@
+{% extends 'Admin/adminHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h2 class="page-heading">Dog Walker Registry</h2>
+
+  <div class="container">
+    {% if qry %}
+    <div class="table-responsive">
+      <table class="table page-table">
+        <thead>
+          <tr>
+            <th>Walker Details</th>
+            <th>Contact Info</th>
+            <th>Verification</th>
+            <th>Management</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in qry %}
+          <tr>
+            <td>
+              <div style="font-weight: 600; color: #333; margin-bottom: 4px;">{{data.name}}</div>
+              <div style="font-size: 0.85em; color: #666; max-width: 250px;">{{data.Address}}</div>
+            </td>
+            <td>
+              <div style="font-weight: 600; color: #333; margin-bottom: 2px;">{{data.email}}</div>
+              <div style="font-size: 0.85em; color: #F44336;">
+                <i class="fa fa-phone"></i> {{data.phonenumber}}
+              </div>
+            </td>
+            <td>
+              <div style="font-size: 0.85em; color: #666; margin-bottom: 4px;">License:</div>
+              <div style="font-weight: 600; color: #333; margin-bottom: 8px;">{{data.license_no}}</div>
+
+              {% if data.user.is_active == 0 %}
+              <span class="badge" style="background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2;">Awaiting
+                Approval</span>
+              {% elif data.user.is_active == 1 %}
+              <span class="badge" style="background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;">Verified
+                Walker</span>
+              {% endif %}
+            </td>
+            <td>
+              <div style="display: flex; gap: 8px; flex-direction: column;">
+                {% if data.user.is_active == 0 %}
+                <div style="display: flex; gap: 8px;">
+                  <a href="/Approvedogwalker?id={{data.user.id}}&status=1" class="btn btn-sm btn-success"
+                    style="border-radius: 4px; font-weight: 600; flex: 1;">APPROVE</a>
+                  <a href="/Approvedogwalker?id={{data.user.id}}&status=0" class="btn btn-sm btn-outline-danger"
+                    style="border-radius: 4px; font-weight: 600; flex: 1;">REJECT</a>
+                </div>
+                {% endif %}
+
+                {% if data.user.is_active == 1 %}
+                <a href="/delete_walker?id={{data.user.id}}" class="btn btn-sm btn-outline-danger"
+                  style="border-radius: 4px; font-weight: 600;"
+                  onclick="return confirm('Confirm removal of this verified walker?')">
+                  <i class="fa fa-user-times"></i> REMOVE WALKER
+                </a>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-paw" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No dog walkers registered yet.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'dogwalker/dogwalkerHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h3 class="page-heading">Incoming Walker Bookings</h3>
+
+  <div class="container">
+    {% if qy %}
+    <table class="table table-bordered table-striped page-table">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Service</th>
+          <th>Location / Address</th>
+          <th>Phone</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in qy %}
+        <tr>
+          <td style="font-weight: 600;">{{data.user.customer_name}}</td>
+          <td>{{data.service.service}}</td>
+          <td>{{data.user.Address}}</td>
+          <td>{{data.user.phonenumber}}</td>
+          <td>{{data.walkin_time}}</td>
+          <td>{{data.walkout_time}}</td>
+          <td>
+            {% if data.workstatus == 'pending' %}
+            <a href="/Acceptwalk?id={{ data.id }}" class="btn btn-success"
+              style="font-weight: 600; font-size: 0.85em;">ACCEPT REQUEST</a>
+            {% elif data.workstatus == 'paid' %}
+            <a href="/completewalk?id={{ data.id }}" class="btn btn-primary"
+              style="font-weight: 600; font-size: 0.85em;">MARK COMPLETED</a>
+            {% else %}
+            <span class="badge"
+              style="background: #eee; color: #666; padding: 6px 12px; border-radius: 4px;">{{data.workstatus|upper}}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-calendar-check-o" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No walker bookings found at the moment.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

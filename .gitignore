@@ -1,0 +1,31 @@
+# Django
+*.pyc
+*~
+__pycache__/
+db.sqlite3
+/static/media/
+/media/
+.DS_Store
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+
+# Gemini / Antigravity
+.gemini/
+.antigravity/
+brain/
+artifacts/
+scratch/
+implementation_plan.md
+task.md
+walkthrough.md

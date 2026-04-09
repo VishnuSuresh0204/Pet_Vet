@@ -1,0 +1,56 @@
+{% extends 'Shop/shopHome.html' %}
+{% load static %}
+
+{% block header %}
+<div>
+    <h2 style="text-align: center;margin-top: 20px;margin-bottom: 30px;">Pets</h2>
+</div>
+<div class="row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 30px auto;">
+    {% for data in qry %}
+        <div class="col-md-4">
+            <div
+                style="
+                    background-color: #f4f4f4;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                    padding: 20px;
+                    text-align: center;
+                "
+            >
+                <img src="../static/media/{{data.image}}" class="img-responsive" alt="" />
+                <h3><strong> {{data.name}}</strong></h3>
+                <p><strong> {{data.about}}</strong></p>
+                <!-- <p><strong>Stock:</strong> {{data.stock}}</p> -->
+                <p><strong>cost:</strong> {{data.cost}}</p>
+
+                <div style="display: flex; justify-content: center; gap: 10px">
+                    <a href="\Updatepet?id={{data.id}}"
+                        style="
+                            background-color: #4caf50;
+                            color: white;
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        "
+                    >
+                        Update
+                    </a>
+                    <a href="\Deletepet?id={{data.id}}"
+                        style="
+                            background-color: #ff5252;
+                            color: white;
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        "
+                    >
+                        Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'Shop/shopHome.html' %} {% load static %} 
+{% block header %}
+<div><h2 style="text-align: center;margin:20px auto;text-decoration: underline;color: red;">Feedback</h2></div>
+<div style="display: flex;flex-wrap: wrap;justify-content: center;gap: 20px;">
+  <div class="container">
+    <div class="tittle_head_w3ls">
+{% if qy %}
+<table
+        style="
+        margin-top: 40px;
+        margin-bottom: 100px;
+          width: 100%;
+          border-collapse: collapse;
+          border: 1px solid black;
+          padding: 8px;
+        "
+      >
+        <tr style="border: 1px solid black; padding: 8px">
+          <th
+            style="
+              background-color: #f2f2f2;
+              border: 1px solid black;
+              padding: 8px;
+            "
+          >
+            Customer Name
+          </th>
+          <th
+            style="
+              background-color: #f2f2f2;
+              border: 1px solid black;
+              padding: 8px;
+            "
+          >
+          Date
+          </th>
+          <th
+            style="
+              background-color: #f2f2f2;
+              border: 1px solid black;
+              padding: 8px;
+            "
+          >
+          Feedback
+          </th>
+          
+        </tr>
+        {% for data in qy %}
+        
+        <tr>
+          <td style="border: 1px solid black; padding: 8px">
+            {{data.user.customer_name}}
+          </td>
+          <td style="border: 1px solid black; padding: 8px">
+            {{data.Date}}
+          </td>
+          <td style="border: 1px solid black; padding: 8px">
+            {{data.feedback}}
+          </td>
+          
+        </tr>
+        
+        {% endfor %}
+        <!-- Add more rows as needed -->
+      </table>
+      {% else %}
+      <p>No datas</p>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

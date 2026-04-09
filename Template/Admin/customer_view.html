@@ -1,0 +1,56 @@
+{% extends 'Admin/adminHome.html' %}
+{% load static %}
+{% block header %}
+
+<div class="page-content-wrapper">
+  <h2 class="page-heading">Customer Management</h2>
+
+  <div class="container">
+    {% if qry %}
+    <div class="table-responsive">
+      <table class="table page-table">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Contact Info</th>
+            <th>Mailing Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in qry %}
+          <tr>
+            <td>
+              <div style="font-weight: 600; color: #333;">{{data.customer_name}}</div>
+            </td>
+            <td>
+              <div style="font-weight: 600; color: #333; margin-bottom: 2px;">{{data.email}}</div>
+              <div style="font-size: 0.85em; color: #F44336;">
+                <i class="fa fa-phone"></i> {{data.phonenumber}}
+              </div>
+            </td>
+            <td>
+              <div style="font-size: 0.9em; color: #666; max-width: 300px;">{{data.Address}}</div>
+            </td>
+            <td>
+              <a href="/delete_user?id={{data.user.id}}" class="btn btn-sm btn-outline-danger"
+                style="border-radius: 4px; font-weight: 600;"
+                onclick="return confirm('Are you sure you want to delete this user?')">
+                <i class="fa fa-trash"></i> DELETE
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <i class="fa fa-users" style="font-size: 48px; color: #ccc; margin-bottom: 15px;"></i>
+      <p>No registered customers found in the system.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

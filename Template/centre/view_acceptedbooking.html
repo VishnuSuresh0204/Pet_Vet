@@ -1,0 +1,54 @@
+{% extends 'centre/carecentreHome.html' %}
+{% block header %}
+<div style="text-align: center;">
+  <h2>Details</h2>
+</div>
+<div style="display: flex;flex-wrap: wrap;justify-content: center;gap: 20px;">
+  {% for data in qry %}
+  <div style="
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+  ">
+
+    <p><strong>user Name:</strong> {{data.user.customer_name}}</p>
+    <p><strong>Address:</strong>{{data.user.Address}}</p>
+    <p><strong>Phonenumber:</strong>{{data.user.phonenumber}}</p>
+    <p><strong>Time</strong> {{data.Time}}</p>
+    <p><strong>Date:</strong> {{data.date}}</p>
+    <p><strong>status:</strong> {{data.status}}</p>
+
+    <div style="display: flex; justify-content: center; gap: 10px">
+      <!-- <a href="\completewalk?id={{data.id}}"
+      style="
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      "
+    >
+      Complete
+  </a> -->
+      <!-- <a href="\DeleteDogwalker?=id={{data.id}}"
+      style="
+        background-color: #ff5252;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      "
+    >
+      
+  </a> -->
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
